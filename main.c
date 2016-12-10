@@ -127,7 +127,8 @@ void gpiote_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action
     // the scheduler with less modifications to the code later in the tutorial.
     //button_handler(pin);
     app_sched_event_put(&pin, sizeof(pin), button_scheduler_event_handler);//就是说把button_scheduler_event_handler这个函数放倒scheduler里等着被call
-    // 其实我觉得button_scheduler_event_handler多余了，他的作用就是call button_handler，为什么不直接call button_handler呢。
+    // 其实我觉得button_scheduler_event_handler多余了，他的作用就是call button_handler，为什么不直接call button_handler呢? 但实际上好像并不行，
+    // 因为button_scheduler_event_handler的arguement就得那样，而button_handler的arguement里需要有pin
     haha++;
 }
 
